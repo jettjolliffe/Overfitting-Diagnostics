@@ -1,6 +1,6 @@
 # Overfitting-Diagnostics
 
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 [![nbviewer](https://img.shields.io/badge/notebook-nbviewer-F37626?style=flat-square&logo=jupyter&logoColor=white)](https://nbviewer.org/github/jettjolliffe/Overfitting-Diagnostics/blob/main/overfitting_diagnostics.ipynb)
 
@@ -48,7 +48,7 @@ Appendix A checks the computational shortcuts in each estimator against brute-fo
 
 Over 54 years industry momentum passes the bootstrap tests and PBO, whether the books are managed with GARCH, EWMA or a 63-day window or held at constant exposure. But those years include the decades in which it was discovered, its Sharpe ratio since 2008 is 0.16, and at constant exposure its dependence-adjusted $t$-statistic is only 3.0.
 
-**The deflated Sharpe ratio needs care on real searches.** It builds its luck threshold from the variance of the trials' Sharpe ratios. When a search mixes good and bad strategies, that variance also contains their real differences, and the DSR rates even the 54-year momentum result as luck. With the null variance $1/T$ it agrees with the other tests on the managed books.
+**The deflated Sharpe ratio needs care on real searches.** It builds its luck threshold from the variance of the trials' Sharpe ratios. When a search mixes good and bad strategies, that variance also contains their real differences, and the DSR rates even the 54-year momentum result as luck. With the null variance $1/T$ it agrees with the other tests on the managed books. Correlation matters too: by the eigenvalues of their correlation matrix, the 44 books behave like about 7 independent trials, and even counted that way nothing in 2008–2026 passes.
 
 **Costs decide fast strategies.** Short-term reversal turns over 48 to 228 times its capital a year; every variant loses money net of costs, and the best breaks even at a trading cost of about 1 basis point.
 
@@ -57,11 +57,11 @@ Over 54 years industry momentum passes the bootstrap tests and PBO, whether the 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install numpy scipy pandas matplotlib jupyterlab yfinance
+pip install "numpy==2.5.4" "scipy==1.18.1" "pandas==3.1.0" "matplotlib==3.11.2" "yfinance==1.7.0" "jupyterlab==4.6.4"
 jupyter lab overfitting_diagnostics.ipynb
 ```
 
-Python 3.10 or later. Every simulation is seeded, so a fresh run reproduces every number and figure; it takes about five minutes on one core. Section 8 downloads the 49 industry portfolios and the Fama–French factors from Kenneth French's data library and ETF prices from Yahoo Finance on the first run, and caches them in `data/`, which is not tracked. The published results use French's release built from the September 2026 CRSP file. Both sources revise past data (French occasionally, Yahoo whenever a fund pays a distribution), so a later download can move the Section 8 numbers slightly.
+The published run used Python 3.12 with exactly these package versions. Every simulation is seeded, so with them a fresh run reproduces every number and figure in Sections 1–7 and the appendix; it takes about five minutes on one core. Section 8 downloads the 49 industry portfolios and the Fama–French factors from Kenneth French's data library and ETF prices from Yahoo Finance on the first run, and caches them in `data/`, which is not tracked. The published results use French's release built from the September 2026 CRSP file. Both sources revise past data (French occasionally, Yahoo whenever a fund pays a distribution), so a later download can move the Section 8 numbers slightly.
 
 ## References
 
