@@ -1,0 +1,9 @@
+# local tooling (the pre-commit secret scan runs locally and is not published)
+.venv/
+.pre-commit-config.yaml
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
+
+# market data downloaded by the notebook (not redistributed)
+data/
